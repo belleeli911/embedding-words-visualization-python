@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from sklearn import manifold
+import random
 
 #inizializzazioni
 parola="non esiste"
@@ -15,9 +16,8 @@ ax = fig.add_subplot(111, projection='3d')
 
 
 def hexcas():
-    color="#"    
-    for i in range(0, 6):
-        color=color+str(np.random.randint(3, 9))
+    color_list = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5', '#F5FF33', "#FF0090", '#A833FF', '#33FFA8', '#FFA833']
+    color = random.choice(color_list)
     return color
 
 
@@ -61,12 +61,7 @@ while(True):
     i = 0
     for vettore in vectors_3d:
         print("coordinate vettore !", vettore)
-        """  xpoints = np.append(xpoints, vettore[0])
-        np.append(xpoints,0)
-        ypoints = np.append(ypoints, vettore[1])
-        np.append(ypoints,0)
-        zpoints = np.append(zpoints, vettore[2])
-        np.append(zpoints,0)"""
+
         color=hexcas()
         plt.plot(
             [0,vettore[0]],
@@ -76,6 +71,6 @@ while(True):
         i += 1
    
 
-    
+    plt.title("Rappresentazione 3D dei vettori di parole")
     plt.legend()
     plt.show()
